@@ -59,6 +59,8 @@ public class UserController extends BaseController {
     /**
      * 申请合约
      */
+    private int addLen = "n1Gz4vkuCuZCWdmhLMAMzC2GDBYCQZrrdYX".length();
+
     @PostMapping("applyContract")
     public Object applyContract(@RequestBody Map map) {
         Long officeId = getLong(map, "officeId");
@@ -66,6 +68,9 @@ public class UserController extends BaseController {
         CreditOffice office = officeService.findById(officeId);
         if(!noEmptyString(from)){
             return fail("地址必填!");
+        }
+        if(from.length() != addLen){
+            return fail("地址不规范!");
         }
         if (office == null) {
             return fail("机构不存在!");
