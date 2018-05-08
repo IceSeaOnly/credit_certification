@@ -1,4 +1,4 @@
-package site.binghai;
+package site.binghai.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,8 +35,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/dashBoard/").setViewName("dashBoard");
-        registry.addViewController("/").setViewName("dashBoard");
+        registry.addViewController("/dashBoard/").setViewName("dashboard");
+        registry.addViewController("/").setViewName("dashboard");
     }
 
     @Override
