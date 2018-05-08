@@ -15,4 +15,5 @@ import org.springframework.stereotype.Component;
 @Data
 public class IceConfig {
     private String server;
+    private String smartContractAddress;
 }

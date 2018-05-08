@@ -2,6 +2,7 @@ package site.binghai.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import site.binghai.config.IceConfig;
 import site.binghai.entity.CreditOffice;
 import site.binghai.entity.User;
 import site.binghai.service.CreditOfficeService;
@@ -17,6 +18,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/login/")
 public class LoginController extends BaseController {
+    @Autowired
+    private IceConfig iceConfig;
     @Autowired
     private UserService userService;
     @Autowired
@@ -97,6 +100,7 @@ public class LoginController extends BaseController {
             return fail("信息重复无法注册!");
         }
 
+        office.setSmartContractAddrsss(iceConfig.getSmartContractAddress());
         creditOfficeService.save(office);
         return success();
     }
